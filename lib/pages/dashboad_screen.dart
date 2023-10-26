@@ -14,6 +14,7 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<ProductProvider>(context,listen:false).getAllCategorise();
+    Provider.of<ProductProvider>(context,listen:false).getAllProducts();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashboard'),

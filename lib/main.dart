@@ -2,6 +2,7 @@ import 'package:ecommerce_app/pages/category_page.dart';
 import 'package:ecommerce_app/pages/dashboad_screen.dart';
 import 'package:ecommerce_app/pages/launcher_screen.dart';
 import 'package:ecommerce_app/pages/login_screen.dart';
+import 'package:ecommerce_app/pages/product_details_page.dart';
 import 'package:ecommerce_app/provider/product_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         NewProductPage.routeName: (_) => const NewProductPage(),
         ViewProductPage.routeName: (_) => const ViewProductPage(),
         CategoryPage.routeName: (_) => const CategoryPage(),
+        ProductDetailsPage.routeName: (_) => const ProductDetailsPage(),
       },
     );
   }

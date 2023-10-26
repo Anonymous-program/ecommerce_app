@@ -7,6 +7,7 @@ class DbHelper {
   static const String collectionAdmin = 'Admins';
   static const String collectionCategory = 'Categories';
   static const String collectionProduct = 'Products';
+
   static Future<bool> isAdmin(String uid) async {
     final snapshot = await _db.collection(collectionAdmin).doc(uid).get();
     return snapshot.exists;
@@ -17,16 +18,30 @@ class DbHelper {
     category.id = doc.id;
     return doc.set(category.toJson());
   }
+
   static Future<void> addProduct(ProductModel product) {
     final doc = _db.collection(collectionProduct).doc();
     product.id = doc.id;
     return doc.set(product.toJson());
   }
 
-  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllCategorise() => _db
-      .collection(collectionCategory)
-      .orderBy(
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllCategorise() =>
+      _db
+          .collection(collectionCategory)
+          .orderBy(
         'name',
       )
-      .snapshots();
+          .snapshots();
+
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllProducts() =>
+      _db
+          .collection(collectionProduct)
+          .snapshots();
+
+  static Future<void> updateProductField(String id, Map<String, dynamic>map) {
+    return _db.collection(collectionProduct)
+        .doc(id)
+        .update(map);
+  }
 }
+
